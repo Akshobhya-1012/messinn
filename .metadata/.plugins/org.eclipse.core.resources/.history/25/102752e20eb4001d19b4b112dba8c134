@@ -1,0 +1,9 @@
+package com.app.pojos;
+
+public class admin extends BaseEntity {
+
+	private String aname;
+	private String aemail;
+	private String amob;
+	private String apassword;
+}

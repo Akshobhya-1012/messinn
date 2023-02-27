@@ -1,0 +1,13 @@
+package com.app.pojos;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="mess_dish")
+public class Mess_dish extends BaseEntity {
+
+	private String ddescription;
+	private double dprice;
+	private String mdimage;
+	
+}

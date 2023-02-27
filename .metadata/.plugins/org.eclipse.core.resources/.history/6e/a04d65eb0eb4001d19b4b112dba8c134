@@ -1,0 +1,10 @@
+package com.app.pojos;
+
+public class customer extends BaseEntity {
+
+	private String cname;
+	private String cemail;
+	private String cmob;
+	private String cpassword;
+	
+}

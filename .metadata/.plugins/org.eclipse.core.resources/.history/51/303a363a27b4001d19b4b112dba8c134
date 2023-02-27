@@ -1,0 +1,41 @@
+package com.app.pojos;
+
+import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="customer")
+public class Customer extends BaseEntity {
+
+	@Column(name="Customer",length = 30,unique = true)
+	private String cName;
+	@Column(name="E_mail",length = 30,unique = true)
+	private String cEmail;
+	@Column(name="Mobile",length = 30,unique = true)
+	private String cMob;
+	@Column(name="Password",length = 30,unique = true)
+	private String cPassword;
+	
+	@OneToMany(mappedBy = "myCustomer", cascade = CascadeType.ALL,orphanRemoval=true)
+	private java.util.List<Mess_dish> customer_dish_list=new ArrayList<>();
+	
+	@ManyToOne
+	@JoinColumn(name="mess_fid")
+	private Mess myMess;
+}
+
+
+
+
+
+
+
+
+

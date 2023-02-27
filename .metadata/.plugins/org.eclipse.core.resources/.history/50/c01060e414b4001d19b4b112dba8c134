@@ -1,0 +1,16 @@
+package com.app.pojos;
+
+import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cart")
+public class Cart extends BaseEntity {
+
+	private int totalItems;
+	private double totalCartPrice;
+	private LocalDate createdOn;
+	
+}

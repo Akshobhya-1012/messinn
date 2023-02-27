@@ -1,0 +1,10 @@
+package com.app.pojos;
+
+public class owner extends BaseEntity {
+
+	private String oname;
+	private String oemail;
+	private String omob;
+	private String opassword;
+	
+}

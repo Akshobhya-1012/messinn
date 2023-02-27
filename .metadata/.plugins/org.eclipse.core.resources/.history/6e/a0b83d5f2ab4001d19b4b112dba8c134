@@ -1,0 +1,24 @@
+package com.app.pojos;
+
+import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="dish")
+public class Dish extends BaseEntity {
+
+	@Column(name="Dish",length = 30,unique = true)
+	private String dName;
+	@Column(name="Description",length = 30,unique = true)
+	private String dDescription;
+	
+	@OneToMany(mappedBy = "myDish", cascade = CascadeType.ALL,orphanRemoval=true)
+	private java.util.List<Mess_dish> dish_mess_list=new ArrayList<>();
+	
+	
+}

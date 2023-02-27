@@ -1,0 +1,13 @@
+package com.app.pojos;
+
+import javax.persistence.*;
+@Entity
+@Table(name="owner")
+public class Owner extends BaseEntity {
+
+	private String oname;
+	private String oemail;
+	private String omob;
+	private String opassword;
+	
+}

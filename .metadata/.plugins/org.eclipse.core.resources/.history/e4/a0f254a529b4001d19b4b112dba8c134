@@ -1,0 +1,19 @@
+package com.app.pojos;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="admin")
+public class Admin extends BaseEntity {
+
+	@Column(name="Admin",length = 30,unique = true)
+	private String aName;
+	@Column(name="E_mail",length = 30,unique = true)
+	private String aEmail;
+	@Column(name="Mobile",length = 30,unique = true)
+	private String aMob;
+	@Column(name="Password",length = 30,unique = true)
+	private String aPassword;
+}

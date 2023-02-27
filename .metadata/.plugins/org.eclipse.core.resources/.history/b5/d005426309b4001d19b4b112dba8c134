@@ -1,0 +1,17 @@
+package com.app.pojos;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="mess")
+public class mess extends BaseEntity {
+
+	private int mid;
+	@Column(length = 30,unique = true)
+	private String mname;
+	@Column(length = 30,unique = true)
+	private String maddress;
+	@Column(length = 30,unique = true)
+	private String mmob;
+	
+}

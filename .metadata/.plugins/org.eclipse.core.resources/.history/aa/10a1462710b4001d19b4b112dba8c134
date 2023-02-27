@@ -1,0 +1,15 @@
+package com.app.pojos;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="customer")
+public class Customer extends BaseEntity {
+
+	private String cname;
+	private String cemail;
+	private String cmob;
+	private String cpassword;
+	
+}

@@ -1,0 +1,10 @@
+package com.app.pojos;
+
+public class mess extends BaseEntity {
+
+	private int mid;
+	private String mname;
+	private String maddress;
+	private String mob;
+	
+}

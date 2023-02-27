@@ -1,0 +1,25 @@
+package com.app.pojos;
+
+import java.util.ArrayList;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="mess")
+public class Mess extends BaseEntity {
+	
+	//private int mid;
+	@Column(length = 30,unique = true)
+	private String mname;
+	@Column(length = 30,unique = true)
+	private String maddress;
+	@Column(length = 30,unique = true)
+	private String mmob;
+	
+	@ManyToOne
+	@JoinColumn(name="owner_fid")
+	private Owner myOwner;
+
+	@OneToMany(mappedBy = "myMess", cascade = CascadeType.ALL,orphanRemoval=true)
+	private java.util.List<Mess_dish> mess_dish_list=new ArrayList<>();
+}

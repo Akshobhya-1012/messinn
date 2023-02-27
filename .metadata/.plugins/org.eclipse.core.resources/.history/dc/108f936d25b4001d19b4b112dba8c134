@@ -1,0 +1,16 @@
+package com.app.pojos;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="dish")
+public class Dish extends BaseEntity {
+
+	@Column(name="Dish",length = 30,unique = true)
+	private String dName;
+	@Column(name="Description",length = 30,unique = true)
+	private String dDescription;
+	
+}

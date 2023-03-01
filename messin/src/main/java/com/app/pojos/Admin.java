@@ -5,65 +5,67 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="admin")
+@Table(name = "admin")
 public class Admin extends BaseEntity {
 
-	@Column(name="Admin",length = 30,unique = true)
-	private String aName;
-	@Column(name="E_mail",length = 30,unique = true)
-	private String aEmail;
-	@Column(name="Mobile",length = 30,unique = true)
-	private String aMob;
-	@Column(name="Password",length = 30,unique = true)
-	private String aPassword;
-	
-	public Admin(String aName, String aEmail, String aMob, String aPassword) {
-		super();
-		this.aName = aName;
-		this.aEmail = aEmail;
-		this.aMob = aMob;
-		this.aPassword = aPassword;
-	}
-	
+	@Column(name = "Admin_name", length = 30, unique = true)
+	private String name;
+	@Column(name = "E_mail", length = 30, unique = true)
+	private String email;
+	@Column(name = "Mobile", length = 30, unique = true)
+	private String mob;
+	@Column(name = "Password", length = 30, unique = true)
+	private String password;
 	
 	public Admin() {
 		super();
 		
 	}
 
-
-	public String getaName() {
-		return aName;
-	}
-	public void setaName(String aName) {
-		this.aName = aName;
-	}
-	public String getaEmail() {
-		return aEmail;
-	}
-	public void setaEmail(String aEmail) {
-		this.aEmail = aEmail;
-	}
-	public String getaMob() {
-		return aMob;
-	}
-	public void setaMob(String aMob) {
-		this.aMob = aMob;
-	}
-	public String getaPassword() {
-		return aPassword;
-	}
-	public void setaPassword(String aPassword) {
-		this.aPassword = aPassword;
+	public Admin(String name, String email, String mob, String password) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.mob = mob;
+		this.password = password;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMob() {
+		return mob;
+	}
+
+	public void setMob(String mob) {
+		this.mob = mob;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {
-		return "Admin [aName=" + aName + ", aEmail=" + aEmail + ", aMob=" + aMob + "]";
+		return "Admin [name=" + name + ", email=" + email + ", mob=" + mob + "]";
 	}
 	
 	
-	
-	
-}
+	}

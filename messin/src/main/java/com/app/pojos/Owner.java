@@ -9,13 +9,13 @@ import javax.persistence.*;
 public class Owner extends BaseEntity {
 
 	@Column(name="owner_name",length = 30,unique = true)
-	private String oName;
+	private String name;
 	@Column(name="E_mail",length = 30,unique = true)
-	private String oEmail;
+	private String email;
 	@Column(name="Mobile",length = 30,unique = true)
-	private String oMob;
+	private String mob;
 	@Column(name="Password",length = 30,unique = true)
-	private String oPassword;
+	private String password;
 	
 	@OneToMany(mappedBy = "myOwner", cascade = CascadeType.ALL,orphanRemoval=true)
 	private java.util.List<Mess> mess_list=new ArrayList<>();
@@ -25,45 +25,45 @@ public class Owner extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Owner(String oName, String oEmail, String oMob, String oPassword, List<Mess> mess_list) {
+	public Owner(String name, String email, String mob, String password, List<Mess> mess_list) {
 		super();
-		this.oName = oName;
-		this.oEmail = oEmail;
-		this.oMob = oMob;
-		this.oPassword = oPassword;
+		this.name = name;
+		this.email = email;
+		this.mob = mob;
+		this.password = password;
 		this.mess_list = mess_list;
 	}
 
-	public String getoName() {
-		return oName;
+	public String getName() {
+		return name;
 	}
 
-	public void setoName(String oName) {
-		this.oName = oName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getoEmail() {
-		return oEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setoEmail(String oEmail) {
-		this.oEmail = oEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getoMob() {
-		return oMob;
+	public String getMob() {
+		return mob;
 	}
 
-	public void setoMob(String oMob) {
-		this.oMob = oMob;
+	public void setMob(String mob) {
+		this.mob = mob;
 	}
 
-	public String getoPassword() {
-		return oPassword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setoPassword(String oPassword) {
-		this.oPassword = oPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public java.util.List<Mess> getMess_list() {
@@ -73,6 +73,11 @@ public class Owner extends BaseEntity {
 	public void setMess_list(java.util.List<Mess> mess_list) {
 		this.mess_list = mess_list;
 	}
+
+	@Override
+	public String toString() {
+		return "Owner [name=" + name + ", email=" + email + ", mob=" + mob + ", mess_list=" + mess_list + "]";
+	}
 	
-	
-}
+
+	}

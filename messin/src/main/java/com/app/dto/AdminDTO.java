@@ -5,23 +5,16 @@ import org.springframework.stereotype.Component;
 
 import com.app.pojos.Admin;
 
-
-
-
 public class AdminDTO {
-	
+
 	private String name;
 	private String email;
 	private String password;
 	private String mob;
-	
+
 	public AdminDTO() {
 		// TODO Auto-generated constructor stub
 	}
-
-	
-
-	
 
 	public AdminDTO(String name, String email, String password, String mob) {
 		super();
@@ -67,7 +60,7 @@ public class AdminDTO {
 	public String toString() {
 		return "AdminDTO [name=" + name + ", email=" + email + ", mob=" + mob + "]";
 	}
-	
+
 //	public static AdminDTO fromEntity(Admin entity) {
 //		AdminDTO dto = new AdminDTO();
 //		BeanUtils.copyProperties(entity, dto);
@@ -80,4 +73,3 @@ public class AdminDTO {
 //		return entity;
 //	}
 }
-

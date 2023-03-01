@@ -1,7 +1,5 @@
 package com.app.dto;
 
-
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -9,15 +7,15 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
-
 public class CredentialsDTO {
-	
+
 	@NotBlank(message = "Email can't be blank!")
 	@Email(message = "Invalid Email Format")
-	@Length(min = 5,max=20,message = "Invalid Email length!!!!!!!")
+	@Length(min = 5, max = 20, message = "Invalid Email length!!!!!!!")
 	private String email;
-	@Pattern(regexp="((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})",message = "Blank or Invalid Password!!!!")
+	@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})", message = "Blank or Invalid Password!!!!")
 	private String password;
+
 	public CredentialsDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -48,6 +46,4 @@ public class CredentialsDTO {
 		return "CredentialsDTO [email=" + email + "]";
 	}
 
-	
 }
-

@@ -16,10 +16,10 @@ public class Admin extends BaseEntity {
 	private String mob;
 	@Column(name = "Password", length = 30, unique = true)
 	private String password;
-	
+
 	public Admin() {
 		super();
-		
+
 	}
 
 	public Admin(String name, String email, String mob, String password) {
@@ -66,6 +66,5 @@ public class Admin extends BaseEntity {
 	public String toString() {
 		return "Admin [name=" + name + ", email=" + email + ", mob=" + mob + "]";
 	}
-	
-	
-	}
+
+}

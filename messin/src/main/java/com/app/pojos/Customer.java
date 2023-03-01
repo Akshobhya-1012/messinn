@@ -13,26 +13,26 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="customer")
+@Table(name = "customer")
 public class Customer extends BaseEntity {
 
-	@Column(name="Customer",length = 30,unique = true)
-	private String cName;
-	@Column(name="E_mail",length = 30,unique = true)
-	private String cEmail;
-	@Column(name="Mobile",length = 30,unique = true)
-	private String cMob;
-	@Column(name="Password",length = 30,unique = true)
-	private String cPassword;
-	
-	@OneToMany(mappedBy = "myCustomer", cascade = CascadeType.ALL,orphanRemoval=true)
-	private java.util.List<Mess_dish> customer_dish_list=new ArrayList<>();
-	
+	@Column(name = "Customer_name", length = 30, unique = true)
+	private String name;
+	@Column(name = "E_mail", length = 30, unique = true)
+	private String email;
+	@Column(name = "Mobile", length = 30, unique = true)
+	private String mob;
+	@Column(name = "Password", length = 30, unique = true)
+	private String password;
+
+	@OneToMany(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true)
+	private java.util.List<Mess_dish> customer_dish_list = new ArrayList<>();
+
 	@ManyToOne
-	@JoinColumn(name="mess_fid")
+	@JoinColumn(name = "mess_fid")
 	private Mess myMess;
-	
-	@OneToOne(mappedBy="myCustomer", cascade=CascadeType.ALL, orphanRemoval = true)
+
+	@OneToOne(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Cart myCart;
 
 	public Customer() {
@@ -40,48 +40,48 @@ public class Customer extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String cName, String cEmail, String cMob, String cPassword, List<Mess_dish> customer_dish_list,
+	public Customer(String name, String email, String mob, String password, List<Mess_dish> customer_dish_list,
 			Mess myMess, Cart myCart) {
 		super();
-		this.cName = cName;
-		this.cEmail = cEmail;
-		this.cMob = cMob;
-		this.cPassword = cPassword;
+		this.name = name;
+		this.email = email;
+		this.mob = mob;
+		this.password = password;
 		this.customer_dish_list = customer_dish_list;
 		this.myMess = myMess;
 		this.myCart = myCart;
 	}
 
-	public String getcName() {
-		return cName;
+	public String getName() {
+		return name;
 	}
 
-	public void setcName(String cName) {
-		this.cName = cName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getcEmail() {
-		return cEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setcEmail(String cEmail) {
-		this.cEmail = cEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getcMob() {
-		return cMob;
+	public String getMob() {
+		return mob;
 	}
 
-	public void setcMob(String cMob) {
-		this.cMob = cMob;
+	public void setMob(String mob) {
+		this.mob = mob;
 	}
 
-	public String getcPassword() {
-		return cPassword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setcPassword(String cPassword) {
-		this.cPassword = cPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public java.util.List<Mess_dish> getCustomer_dish_list() {
@@ -107,17 +107,11 @@ public class Customer extends BaseEntity {
 	public void setMyCart(Cart myCart) {
 		this.myCart = myCart;
 	}
-	
-	
 
-	
+	@Override
+	public String toString() {
+		return "Customer [name=" + name + ", email=" + email + ", mob=" + mob + ", customer_dish_list="
+				+ customer_dish_list + ", myMess=" + myMess + ", myCart=" + myCart + "]";
+	}
+
 }
-
-
-
-
-
-
-
-
-

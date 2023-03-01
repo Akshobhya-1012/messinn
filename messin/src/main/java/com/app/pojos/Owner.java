@@ -4,25 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
 @Entity
-@Table(name="owner")
+@Table(name = "owner")
 public class Owner extends BaseEntity {
 
-	@Column(name="owner_name",length = 30,unique = true)
+	@Column(name = "owner_name", length = 30, unique = true)
 	private String name;
-	@Column(name="E_mail",length = 30,unique = true)
+	@Column(name = "E_mail", length = 30, unique = true)
 	private String email;
-	@Column(name="Mobile",length = 30,unique = true)
+	@Column(name = "Mobile", length = 30, unique = true)
 	private String mob;
-	@Column(name="Password",length = 30,unique = true)
+	@Column(name = "Password", length = 30, unique = true)
 	private String password;
-	
-	@OneToMany(mappedBy = "myOwner", cascade = CascadeType.ALL,orphanRemoval=true)
-	private java.util.List<Mess> mess_list=new ArrayList<>();
+
+	@OneToMany(mappedBy = "myOwner", cascade = CascadeType.ALL, orphanRemoval = true)
+	private java.util.List<Mess> mess_list = new ArrayList<>();
 
 	public Owner() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Owner(String name, String email, String mob, String password, List<Mess> mess_list) {
@@ -78,6 +79,5 @@ public class Owner extends BaseEntity {
 	public String toString() {
 		return "Owner [name=" + name + ", email=" + email + ", mob=" + mob + ", mess_list=" + mess_list + "]";
 	}
-	
 
-	}
+}

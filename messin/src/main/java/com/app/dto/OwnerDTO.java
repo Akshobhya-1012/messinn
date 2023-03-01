@@ -4,76 +4,61 @@ import org.springframework.beans.BeanUtils;
 
 import com.app.pojos.Owner;
 
-
-
 public class OwnerDTO {
-	
-	
-	private  String oName;
-	private String oEmail;
-	private String oMob;
-	private String oPassword;
-	
+
+	private String name;
+	private String email;
+	private String mob;
+	private String password;
+
 	public OwnerDTO() {
 		super();
-		
+
 	}
 
-	public OwnerDTO(String oName, String oEmail, String oMob, String oPassword) {
+	public OwnerDTO(String name, String email, String mob, String password) {
 		super();
-		this.oName = oName;
-		this.oEmail = oEmail;
-		this.oMob = oMob;
-		this.oPassword = oPassword;
+		this.name = name;
+		this.email = email;
+		this.mob = mob;
+		this.password = password;
 	}
 
-	public String getoName() {
-		return oName;
+	public String getName() {
+		return name;
 	}
 
-	public void setoName(String oName) {
-		this.oName = oName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getoEmail() {
-		return oEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setoEmail(String oEmail) {
-		this.oEmail = oEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getoMob() {
-		return oMob;
+	public String getMob() {
+		return mob;
 	}
 
-	public void setoMob(String oMob) {
-		this.oMob = oMob;
+	public void setMob(String mob) {
+		this.mob = mob;
 	}
 
-	public String getoPassword() {
-		return oPassword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setoPassword(String oPassword) {
-		this.oPassword = oPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return "OwnerDTO [oName=" + oName + ", oEmail=" + oEmail + ", oMob=" + oMob + "]";
-	}
-	public static OwnerDTO fromEntity(Owner entity) {
-		OwnerDTO dto = new OwnerDTO();
-		BeanUtils.copyProperties(entity, dto);
-		return dto;
+		return "OwnerDTO [name=" + name + ", email=" + email + ", mob=" + mob + "]";
 	}
 
-	public static Owner toEntity(OwnerDTO dto) {
-		Owner entity = new Owner();
-		BeanUtils.copyProperties(dto, entity);
-		return entity;
-	}
-	
-	
 }

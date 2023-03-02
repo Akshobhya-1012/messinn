@@ -10,6 +10,7 @@ import com.app.dao.OwnerDao;
 import com.app.dto.AdminDTO;
 import com.app.dto.CredentialsDTO;
 import com.app.dto.OwnerDTO;
+import com.app.pojos.Admin;
 import com.app.pojos.Owner;
 
 @Service
@@ -29,5 +30,27 @@ public class OwnerServiceImpl implements OwnerService {
 		// => success
 		return mapper.map(owner, OwnerDTO.class);
 	}
+
+	@Override
+	public Owner fetchOwnerDetails(Long ownerId) {
+		return ownerDao.findById(ownerId).orElseThrow(() -> 
+						new ResourceNotFoundException("Invalid Owner ID !!!!!"));
+	}
+
+	@Override
+	public Owner addOwner(Owner owner) {
+		return ownerDao.save(owner);
+	}
+
+	@Override
+	public String deleteOwner(Long ownerId) {
+		// chekc if owner exists by id
+		if (ownerDao.existsById(ownerId)) {
+			ownerDao.deleteById(ownerId);
+			return "Owner details deleted ....";
+		}
+		return "Deletion Failed : Invalid Emp Id !!!!!!!!!!!";
+	}
+
 
 }

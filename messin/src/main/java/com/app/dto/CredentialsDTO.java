@@ -11,7 +11,7 @@ public class CredentialsDTO {
 
 	@NotBlank(message = "Email can't be blank!")
 	@Email(message = "Invalid Email Format")
-	@Length(min = 5, max = 20, message = "Invalid Email length!!!!!!!")
+	@Length(min = 5, max = 35, message = "Invalid Email length!!!!!!!")
 	private String email;
 	@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})", message = "Blank or Invalid Password!!!!")
 	private String password;

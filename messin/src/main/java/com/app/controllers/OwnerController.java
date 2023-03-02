@@ -25,7 +25,7 @@ public class OwnerController {
 	private OwnerService ownerService;
 	
 	@PostMapping("/signin")
-	public ResponseEntity<?> validateCustomer(@RequestBody @Valid CredentialsDTO dto) {
+	public ResponseEntity<?> validateOwner(@RequestBody @Valid CredentialsDTO dto) {
 		return ResponseEntity.ok(ownerService.authenticateOwner(dto));
 	}
 }

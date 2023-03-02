@@ -9,4 +9,6 @@ import com.app.pojos.Customer;
 public interface CustomerDao extends JpaRepository<Customer, Long> {
 	
 	Optional<Customer> findByEmailAndPassword(String em, String pass);
+	
+	boolean findByEmail(String em);
 }

@@ -40,16 +40,12 @@ public class Customer extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String name, String email, String mob, String password, List<Mess_dish> customer_dish_list,
-			Mess myMess, Cart myCart) {
+	public Customer(String name, String email, String mob, String password) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.mob = mob;
 		this.password = password;
-		this.customer_dish_list = customer_dish_list;
-		this.myMess = myMess;
-		this.myCart = myCart;
 	}
 
 	public String getName() {
@@ -110,8 +106,8 @@ public class Customer extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Customer [name=" + name + ", email=" + email + ", mob=" + mob + ", customer_dish_list="
-				+ customer_dish_list + ", myMess=" + myMess + ", myCart=" + myCart + "]";
+		return "Customer [name=" + name + ", email=" + email + ", mob=" + mob + "]";
 	}
 
+	
 }

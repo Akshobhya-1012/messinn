@@ -18,7 +18,7 @@ public class Owner extends BaseEntity {
 	@Column(name = "Password", length = 30, unique = true)
 	private String password;
 
-	@OneToMany(mappedBy = "myOwner", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "myOwner", cascade = CascadeType.ALL, orphanRemoval = true,fetch=FetchType.EAGER)
 	private java.util.List<Mess> mess_list = new ArrayList<>();
 
 	public Owner() {

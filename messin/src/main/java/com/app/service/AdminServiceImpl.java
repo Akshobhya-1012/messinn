@@ -12,6 +12,7 @@ import com.app.dao.AdminDao;
 import com.app.dto.AdminDTO;
 import com.app.dto.CredentialsDTO;
 import com.app.pojos.Admin;
+import com.app.pojos.Owner;
 
 @Service
 @Transactional
@@ -32,34 +33,7 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
-	@Override
-	public Admin updatePassword(String email, String password) {
-		Admin admin = this.findAdminByEmail(email);
-		if (admin != null) {
-			admin.setPassword(password);
-			return this.save(admin);
-		}
-		return null;
-	}
-
-	@Override
-	public Admin save(Admin admin) {
-		return adminDao.save(admin);
-	}
-
-	@Override
-	public Admin findAdminById(Long id) {
-		Optional<Admin> admin = adminDao.findById(id);
-		return admin.orElse(null);
-
-	}
-
-	@Override
-	public Admin findAdminByEmail(String email) {
-		
-		return null;
-	}
-
+	
 	
 
 }

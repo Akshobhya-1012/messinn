@@ -36,6 +36,7 @@ public class OwnerController {
 	
 	@PostMapping("/signin")
 	public ResponseEntity<?> validateOwner(@RequestBody @Valid CredentialsDTO dto) {
+		System.out.println("");
 		return ResponseEntity.ok(ownerService.authenticateOwner(dto));
 	}
 	@PostMapping("/signup")

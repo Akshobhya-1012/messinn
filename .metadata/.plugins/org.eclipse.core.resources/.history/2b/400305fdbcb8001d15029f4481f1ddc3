@@ -1,0 +1,16 @@
+package com.app.service;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
+
+import com.app.dto.CredentialsDTO;
+import com.app.dto.CustomerDto;
+import com.app.pojos.Customer;
+import com.app.pojos.Dish;
+
+public interface DishService {
+
+	
+	Dish updateDishDetails(Dish detachedDish);
+}

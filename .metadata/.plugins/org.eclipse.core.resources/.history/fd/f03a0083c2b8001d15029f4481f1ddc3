@@ -1,0 +1,13 @@
+package com.app.dao;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.app.pojos.Customer;
+import com.app.pojos.Dish;
+
+public interface DishDao extends JpaRepository<Dish, Long>{
+	
+	boolean findByDname(String name);
+}

@@ -1,0 +1,70 @@
+package com.app.controllers;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.custom_exception.ResourceNotFoundException;
+import com.app.dao.CustomerDao;
+import com.app.dto.ApiResponse;
+import com.app.dto.CredentialsDTO;
+import com.app.dto.CustomerDto;
+import com.app.dto.SignUpDto;
+import com.app.pojos.Customer;
+import com.app.pojos.Dish;
+import com.app.service.CustomerService;
+import com.app.service.DishService;
+
+@RestController
+@CrossOrigin
+@RequestMapping("/dish")
+@Validated
+public class DishController {
+
+	
+	@Autowired
+	private DishService dishService;
+	
+	@PutMapping
+	public Dish updateDishDetails(@RequestBody Dish detachedDish) {
+		//System.out.println("in update emp " + detachedCustomer.getId());// not null
+		return dishService.updateDishDetails(detachedDish);
+	}
+	
+	
+	@DeleteMapping("/{dishId}")
+	public ApiResponse deleteOwnerDetails(@PathVariable Long dishId) {
+
+		return new ApiResponse(dishService.deleteDish(dishId));
+	}
+	
+	@PostMapping("/signup")
+    public ResponseEntity<?> registerDish(@RequestBody Dish transientDish){
+//	Boolean exist=dishService.findByName(transientDish.getName());
+//	if(!exist)
+	{
+		Dish newDish=new Dish(transientDish.getName(),transientDish.getDescription());
+		newDish.setName(transientDish.getName());
+		newDish.setDescription(transientDish.getDescription());
+		
+		dishService.addDish(newDish);
+		return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+		
+	}
+//	else
+//		throw new ResourceNotFoundException("Email already exists!");
+
+	
+}
+}

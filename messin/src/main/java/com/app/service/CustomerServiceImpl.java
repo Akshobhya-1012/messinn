@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -10,8 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.CustomerDao;
 import com.app.dto.CredentialsDTO;
-import com.app.dto.CustomerDto;
+import com.app.dto.CustomerDTO;
 import com.app.pojos.Customer;
+import com.app.pojos.Owner;
 
 @Service
 @Transactional
@@ -24,20 +26,27 @@ public class CustomerServiceImpl implements CustomerService {
 	private ModelMapper mapper;
 
 	@Override
-	public CustomerDto authenticateCustomer(CredentialsDTO dto) {
+	public CustomerDTO authenticateCustomer(CredentialsDTO dto) {
 		// TODO Auto-generated method stub
 		Customer customer = customerDao.findByEmailAndPassword(dto.getEmail(), dto.getPassword())
 				.orElseThrow(() -> new ResourceNotFoundException("Bad Credentials !!!!!"));
 		// => success
-		return mapper.map(customer, CustomerDto.class);
+		return mapper.map(customer, CustomerDTO.class);
 	}
 
 	@Override
-	public Customer updateCustomerDetails(Customer detachedCustomer) {
+	public Customer updateCustomerDetails(CustomerDTO detachedCustomer) {
+		
+		
 		if (customerDao.existsById(detachedCustomer.getId())) {
-			return customerDao.save(detachedCustomer);
+			Customer updCustomer= customerDao.getById(detachedCustomer.getId());
+			updCustomer.setEmail(detachedCustomer.getEmail());
+			updCustomer.setMob(detachedCustomer.getMob());
+			updCustomer.setName(detachedCustomer.getName());
+			updCustomer.setPassword(detachedCustomer.getPassword());
+			return customerDao.save(updCustomer);
 		}
-		throw new ResourceNotFoundException("Invalid Emp Id : Updation Failed!!!!!!!!");
+		throw new ResourceNotFoundException("Invalid Customer Id : Updation Failed!!!!!!!!");
 		
 	}
 
@@ -49,6 +58,11 @@ public class CustomerServiceImpl implements CustomerService {
 			return false;
 		
 		
+	}
+	
+	@Override
+	public List<Customer> getAllCustDetails() {
+		return customerDao.findAll();
 	}
 
 	

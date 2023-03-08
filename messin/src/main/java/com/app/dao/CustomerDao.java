@@ -5,10 +5,12 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.app.pojos.Customer;
+import com.app.pojos.Owner;
 
 public interface CustomerDao extends JpaRepository<Customer, Long> {
 	
 	Optional<Customer> findByEmailAndPassword(String em, String pass);
 	
-	boolean findByEmail(String em);
+	Boolean findByEmail(String em);
+	Customer getById(Long Id);
 }

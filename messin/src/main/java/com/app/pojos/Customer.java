@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,14 +26,14 @@ public class Customer extends BaseEntity {
 	@Column(name = "Password", length = 30, unique = true)
 	private String password;
 
-	@OneToMany(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
 	private java.util.List<Mess_dish> customer_dish_list = new ArrayList<>();
 
 	@ManyToOne
 	@JoinColumn(name = "mess_fid")
 	private Mess myMess;
 
-	@OneToOne(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
 	private Cart myCart;
 
 	public Customer() {

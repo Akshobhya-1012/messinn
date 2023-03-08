@@ -1,0 +1,49 @@
+package com.app.service;
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.custom_exception.ResourceNotFoundException;
+import com.app.dao.CustomerDao;
+import com.app.dao.DishDao;
+import com.app.dto.CredentialsDTO;
+//import com.app.dto.DishDto;
+import com.app.pojos.Dish;
+import com.app.pojos.Owner;
+
+@Service
+@Transactional
+
+public class DishServiceImpl implements DishService {
+
+	@Autowired
+	private DishDao dishDao;
+	
+	@Override
+	public Dish updateDishDetails(Dish detachedDish) {
+		if (dishDao.existsById(detachedDish.getId())) {
+			return dishDao.save(detachedDish);
+		}
+		throw new ResourceNotFoundException("Invalid Emp Id : Updation Failed!!!!!!!!");
+		
+	}
+	
+	@Override
+	public Dish addDish(Dish newDish) {
+		return dishDao.save(newDish);
+	}
+	
+	
+	@Override
+	public String deleteDish(Long dishId) {
+		// chekc if owner exists by id
+		if (dishDao.existsById(dishId)) {
+			dishDao.deleteById(dishId);
+			return "Dish details deleted ....";
+		}
+		return "Deletion Failed : Invalid Dish Id !!!!!!!!!!!";
+	}
+}

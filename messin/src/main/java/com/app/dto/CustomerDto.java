@@ -1,21 +1,31 @@
 package com.app.dto;
 
-public class CustomerDto {
+public class CustomerDTO {
 
+	
+	private Long id;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 	private String email;
 	private String password;
 	private String mob;
-
-	public CustomerDto() {
+	private String name;
+	public CustomerDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerDto(String email, String password, String mob) {
+	public CustomerDTO(String name, String email,String mob,String password ) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.mob = mob;
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -42,9 +52,12 @@ public class CustomerDto {
 		this.mob = mob;
 	}
 
-	@Override
-	public String toString() {
-		return "CustomerDto [email=" + email + ", mob=" + mob + "]";
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

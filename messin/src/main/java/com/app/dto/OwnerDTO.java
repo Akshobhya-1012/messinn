@@ -6,6 +6,15 @@ import com.app.pojos.Owner;
 
 public class OwnerDTO {
 
+	private Long id;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	private String name;
 	private String email;
 	private String mob;

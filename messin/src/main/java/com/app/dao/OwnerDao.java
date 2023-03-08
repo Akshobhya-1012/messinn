@@ -10,5 +10,8 @@ import com.app.pojos.Owner;
 public interface OwnerDao extends JpaRepository<Owner, Long> {
 	
 	Optional<Owner> findByEmailAndPassword(String em, String pass);
+
+	Boolean findByEmail(String email);
+	Owner getById(Long Id);
 	
 }

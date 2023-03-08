@@ -1,5 +1,7 @@
 package com.app.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.CustomerDao;
 import com.app.dto.CredentialsDTO;
-import com.app.dto.CustomerDto;
+import com.app.dto.CustomerDTO;
 import com.app.dto.SignUpDto;
 import com.app.pojos.Customer;
 import com.app.service.CustomerService;
@@ -39,30 +42,34 @@ public class CustomerController {
 	}
 
 	@PutMapping
-	public Customer updateCustomerDetails(@RequestBody Customer detachedCustomer) {
-		System.out.println("in update emp " + detachedCustomer.getId());// not null
+	public Customer updateCustomerDetails(@RequestBody CustomerDTO detachedCustomer) {
+		//System.out.println("in update emp " + detachedCustomer.getId());// not null
 		return customerService.updateCustomerDetails(detachedCustomer);
 	}
 
 	@PostMapping("/signup")
-	    public ResponseEntity<?> registerCustomer(@RequestBody SignUpDto signUpDto){
-		Boolean exist=customerService.findByEmail(signUpDto.getEmail());
-		if(!exist)
+	    public ResponseEntity<?> registerCustomer(@RequestBody CustomerDTO transientCust){
+//		Boolean exist=customerService.findByEmail(transientCust.getEmail());
+//		if(!exist)
 		{
 			Customer cust=new Customer();
-			cust.setName(signUpDto.getName());
-			cust.setEmail(signUpDto.getEmail());
-			cust.setMob(signUpDto.getMob());
-			cust.setPassword(signUpDto.getPassword());
+			cust.setName(transientCust.getName());
+			cust.setEmail(transientCust.getEmail());
+			cust.setMob(transientCust.getMob());
+			cust.setPassword(transientCust.getPassword());
 			
 			customerDao.save(cust);
 			return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
 			
 		}
-		else
-			throw new ResourceNotFoundException("Email already exists!");
+//		else
+//			throw new ResourceNotFoundException("Email already exists!");
 
 		
 	}
 	
+	@GetMapping
+	public List<Customer> getAllCust() {
+		return customerService.getAllCustDetails();
+	}
 }

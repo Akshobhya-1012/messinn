@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import com.app.dto.AdminDTO;
 import com.app.dto.CredentialsDTO;
 import com.app.dto.OwnerDTO;
 import com.app.pojos.Admin;
+import com.app.pojos.Customer;
 import com.app.pojos.Owner;
 
 @Service
@@ -41,6 +44,16 @@ public class OwnerServiceImpl implements OwnerService {
 	public Owner addOwner(Owner owner) {
 		return ownerDao.save(owner);
 	}
+	
+	@Override
+	public Boolean findByEmail(String email) {
+		if (ownerDao.findByEmail(email))
+		return true;
+		else 
+			return false;
+		
+		
+	}
 
 	@Override
 	public String deleteOwner(Long ownerId) {
@@ -51,6 +64,29 @@ public class OwnerServiceImpl implements OwnerService {
 		}
 		return "Deletion Failed : Invalid Emp Id !!!!!!!!!!!";
 	}
+
+	@Override
+	public Owner updateOwnerDetails(OwnerDTO detachedOwner) {
+		if (ownerDao.existsById(detachedOwner.getId())) {
+		Owner updOwner= ownerDao.getById(detachedOwner.getId());
+		updOwner.setEmail(detachedOwner.getEmail());
+		updOwner.setMob(detachedOwner.getMob());
+		updOwner.setName(detachedOwner.getName());
+		updOwner.setPassword(detachedOwner.getPassword());
+			return ownerDao.save(updOwner);
+		}
+
+		else
+		throw new ResourceNotFoundException("Invalid Owner Id : Updation Failed!!!!!!!!");
+	}
+	
+	
+	@Override
+	public List<Owner> getAllOwnerDetails() {
+		return ownerDao.findAll();
+	}
+
+	
 
 
 }

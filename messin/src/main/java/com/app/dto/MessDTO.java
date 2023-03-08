@@ -6,9 +6,9 @@ import com.app.pojos.Mess;
 
 public class MessDTO {
 
-	private String mName;
-	private String mMob;
-	private String mAddress;
+	private String name;
+	private String mob;
+	private String address;
 
 	public MessDTO() {
 		super();
@@ -17,33 +17,33 @@ public class MessDTO {
 
 	public MessDTO(String mName, String mMob, String mAddress) {
 		super();
-		this.mName = mName;
-		this.mMob = mMob;
-		this.mAddress = mAddress;
+		this.name = mName;
+		this.mob = mMob;
+		this.address = mAddress;
 	}
 
-	public String getmName() {
-		return mName;
+	public String getName() {
+		return name;
 	}
 
-	public void setmName(String mName) {
-		this.mName = mName;
+	public void setName(String mName) {
+		this.name = mName;
 	}
 
-	public String getmMob() {
-		return mMob;
+	public String getMob() {
+		return mob;
 	}
 
-	public void setmMob(String mMob) {
-		this.mMob = mMob;
+	public void setMob(String mMob) {
+		this.mob = mMob;
 	}
 
-	public String getmAddress() {
-		return mAddress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setmAddress(String mAddress) {
-		this.mAddress = mAddress;
+	public void setAddress(String mAddress) {
+		this.address = mAddress;
 	}
 
 	public static MessDTO fromEntity(Mess bus) {

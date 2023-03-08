@@ -9,8 +9,15 @@
     <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="antlr.collections.List"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
     <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
     <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Owner"/>
+    <fullyQualifiedTypeName name="com.app.dto.OwnerDTO"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Dish"/>
+    <fullyQualifiedTypeName name="com.app.service.DishService"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Mess"/>
+    <fullyQualifiedTypeName name="com.app.dto.DishDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

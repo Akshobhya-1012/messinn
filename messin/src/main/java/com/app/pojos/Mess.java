@@ -11,11 +11,11 @@ public class Mess extends BaseEntity {
 	
 	//private int mid;
 	@Column(length = 30,unique = true)
-	private String mname;
+	private String name;
 	@Column(length = 30,unique = true)
-	private String maddress;
+	private String address;
 	@Column(length = 30,unique = true)
-	private String mmob;
+	private String mob;
 	
 	@ManyToOne
 	@JoinColumn(name="owner_fid")
@@ -35,36 +35,36 @@ public class Mess extends BaseEntity {
 	public Mess(String mname, String maddress, String mmob, Owner myOwner, List<Mess_dish> mess_dish_list,
 			List<Customer> customer) {
 		super();
-		this.mname = mname;
-		this.maddress = maddress;
-		this.mmob = mmob;
+		this.name = mname;
+		this.address = maddress;
+		this.mob = mmob;
 		this.myOwner = myOwner;
 		this.mess_dish_list = mess_dish_list;
 		this.customer = customer;
 	}
 
 	public String getMname() {
-		return mname;
+		return name;
 	}
 
 	public void setMname(String mname) {
-		this.mname = mname;
+		this.name = mname;
 	}
 
 	public String getMaddress() {
-		return maddress;
+		return address;
 	}
 
 	public void setMaddress(String maddress) {
-		this.maddress = maddress;
+		this.address = maddress;
 	}
 
 	public String getMmob() {
-		return mmob;
+		return mob;
 	}
 
 	public void setMmob(String mmob) {
-		this.mmob = mmob;
+		this.mob = mmob;
 	}
 
 	public Owner getMyOwner() {

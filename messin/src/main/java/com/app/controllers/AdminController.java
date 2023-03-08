@@ -1,5 +1,7 @@
 package com.app.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.Range;
@@ -36,7 +38,9 @@ public class AdminController {
 	
 	@GetMapping("/{ownerId}")
 	public Owner getOwnerDetails(
-	@PathVariable @Range(min = 1, max = 10, message = "Emp Id out of range!!!!!") Long ownerId) {
+	@PathVariable 
+	//@Range(min = 1, max = 10, message = "Emp Id out of range!!!!!")
+	Long ownerId) {
 
 		return ownerService.fetchOwnerDetails(ownerId);
 	}
@@ -52,6 +56,11 @@ public class AdminController {
 	public ApiResponse deleteOwnerDetails(@PathVariable Long ownerId) {
 
 		return new ApiResponse(ownerService.deleteOwner(ownerId));
+	}
+	
+	@GetMapping
+	public List<Owner> getAllOwner() {
+		return ownerService.getAllOwnerDetails();
 	}
 	
 	

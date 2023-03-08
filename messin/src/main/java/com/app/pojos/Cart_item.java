@@ -13,7 +13,7 @@ public class Cart_item extends BaseEntity {
 	
 	@Column(name="Quantity")
 	private int quantity;
-	@Column(name="Owner")
+	@Column(name="Total_Price")
 	private double totalPrice;
 	@ManyToOne
 	@JoinColumn(name="cart_id")

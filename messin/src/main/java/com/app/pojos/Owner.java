@@ -15,7 +15,7 @@ public class Owner extends BaseEntity {
 	private String email;
 	@Column(name = "Mobile", length = 30, unique = true)
 	private String mob;
-	@Column(name = "Password", length = 30, unique = true)
+	@Column(name = "Password", length = 30)
 	private String password;
 
 	@OneToMany(mappedBy = "myOwner", cascade = CascadeType.ALL, orphanRemoval = true,fetch=FetchType.EAGER)
@@ -26,13 +26,12 @@ public class Owner extends BaseEntity {
 		
 	}
 
-	public Owner(String name, String email, String mob, String password, List<Mess> mess_list) {
+	public Owner(String name, String email, String mob, String password) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.mob = mob;
 		this.password = password;
-		this.mess_list = mess_list;
 	}
 
 	public String getName() {
@@ -77,7 +76,7 @@ public class Owner extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Owner [name=" + name + ", email=" + email + ", mob=" + mob + ", mess_list=" + mess_list + "]";
+		return "Owner [name=" + name + ", email=" + email + ", mob=" + mob + "]";
 	}
 
 }

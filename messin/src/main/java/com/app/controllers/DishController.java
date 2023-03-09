@@ -80,4 +80,11 @@ public class DishController {
 	public List<Dish> getAllDish() {
 		return dishService.getAllDishDetails();
 	}
+	
+	@GetMapping("/count")
+	public Long noOfDish()
+	{
+		return dishService.noOfDish();
+	}
+	
 }

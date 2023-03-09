@@ -1,5 +1,6 @@
 package com.app.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,5 @@ public interface CustomerDao extends JpaRepository<Customer, Long> {
 	
 	Boolean findByEmail(String em);
 	Customer getById(Long Id);
+	List<Customer> findAllByMyMessId(Long Id);
 }

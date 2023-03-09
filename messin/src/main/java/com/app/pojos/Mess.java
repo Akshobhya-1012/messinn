@@ -23,7 +23,7 @@ public class Mess extends BaseEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="owner_fid")
-	@JsonIgnore
+	//@JsonIgnore
 	private Owner myOwner;
 
 	@OneToMany(mappedBy = "myMess", cascade = CascadeType.ALL,orphanRemoval=true )
@@ -106,10 +106,10 @@ public class Mess extends BaseEntity {
 		this.customer = customer;
 	}
 
-	@Override
-	public String toString() {
-		return "Mess [name=" + name + ", address=" + address + ", mob=" + mob + ", myOwner=" + myOwner + "]";
-	}
-	
+//	@Override
+//	public String toString() {
+//		return "Mess [name=" + name + ", address=" + address + ", mob=" + mob + ", myOwner=" + myOwner + "]";
+//	}
+//	
 	
 }

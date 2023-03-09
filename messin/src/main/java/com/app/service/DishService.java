@@ -25,4 +25,6 @@ public interface DishService {
 	List<Dish> getAllDishDetails();
 
 	Dish updateDishDetails(DishDTO detachedDish);
+
+	Long noOfDish();
 }

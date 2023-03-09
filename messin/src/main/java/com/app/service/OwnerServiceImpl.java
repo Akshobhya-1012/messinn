@@ -87,6 +87,12 @@ public class OwnerServiceImpl implements OwnerService {
 	}
 
 	
+	@Override
+	 public Long noOfOwners()
+	 {
+		 return ownerDao.count();
+	 }
+	
 
 
 }

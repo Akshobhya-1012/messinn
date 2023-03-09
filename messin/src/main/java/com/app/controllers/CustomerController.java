@@ -68,8 +68,21 @@ public class CustomerController {
 		
 	}
 	
-	@GetMapping
+	@GetMapping("/")
 	public List<Customer> getAllCust() {
 		return customerService.getAllCustDetails();
+	}
+	
+	@PostMapping("/{messId}")
+	public List<Customer> getCustByMessId(Long messId)
+	{
+		return customerService.getCustByMess(messId);
+	}
+	
+	
+	@GetMapping("/count")
+	public Long noOfCustomers()
+	{
+		return customerService.noOfCustomers();
 	}
 }

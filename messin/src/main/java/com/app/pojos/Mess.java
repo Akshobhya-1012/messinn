@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="mess")
 public class Mess extends BaseEntity {
@@ -19,12 +21,15 @@ public class Mess extends BaseEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="owner_fid")
+	@JsonIgnore
 	private Owner myOwner;
 
-	@OneToMany(mappedBy = "myMess", cascade = CascadeType.ALL,orphanRemoval=true)
+	@OneToMany(mappedBy = "myMess", cascade = CascadeType.ALL,orphanRemoval=true )
+	@JsonIgnore
 	private java.util.List<Mess_dish> mess_dish_list=new ArrayList<>();
 	
 	@OneToMany(mappedBy = "myMess", cascade = CascadeType.ALL,orphanRemoval=true)
+	@JsonIgnore
 	private java.util.List<Customer> customer=new ArrayList<>();
 
 	public Mess() {
@@ -32,38 +37,37 @@ public class Mess extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Mess(String mname, String maddress, String mmob, Owner myOwner, List<Mess_dish> mess_dish_list,
-			List<Customer> customer) {
+	public Mess(String mname, String maddress, String mmob, Owner myOwner) {
 		super();
 		this.name = mname;
 		this.address = maddress;
 		this.mob = mmob;
 		this.myOwner = myOwner;
-		this.mess_dish_list = mess_dish_list;
-		this.customer = customer;
+		//this.mess_dish_list = mess_dish_list;
+		//this.customer = customer;
 	}
 
-	public String getMname() {
+	public String getname() {
 		return name;
 	}
 
-	public void setMname(String mname) {
+	public void setname(String mname) {
 		this.name = mname;
 	}
 
-	public String getMaddress() {
+	public String getaddress() {
 		return address;
 	}
 
-	public void setMaddress(String maddress) {
+	public void setaddress(String maddress) {
 		this.address = maddress;
 	}
 
-	public String getMmob() {
+	public String getmob() {
 		return mob;
 	}
 
-	public void setMmob(String mmob) {
+	public void setmob(String mmob) {
 		this.mob = mmob;
 	}
 
@@ -89,6 +93,11 @@ public class Mess extends BaseEntity {
 
 	public void setCustomer(java.util.List<Customer> customer) {
 		this.customer = customer;
+	}
+
+	@Override
+	public String toString() {
+		return "Mess [name=" + name + ", address=" + address + ", mob=" + mob + ", myOwner=" + myOwner + "]";
 	}
 	
 	

@@ -57,7 +57,7 @@ public class OwnerServiceImpl implements OwnerService {
 
 	@Override
 	public String deleteOwner(Long ownerId) {
-		// chekc if owner exists by id
+		// check if owner exists by id
 		if (ownerDao.existsById(ownerId)) {
 			ownerDao.deleteById(ownerId);
 			return "Owner details deleted ....";

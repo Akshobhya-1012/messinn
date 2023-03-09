@@ -3,12 +3,40 @@ package com.app.dto;
 import org.springframework.beans.BeanUtils;
 
 import com.app.pojos.Mess;
+import com.app.pojos.Owner;
 
 public class MessDTO {
 
+	
+	private Long id;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 	private String name;
 	private String mob;
 	private String address;
+	private Long ownerid;
+	
+	//private Owner myOwner;
+//	public Owner getMyOwner() {
+//		return myOwner;
+//	}
+//
+//	public void setMyOwner(Owner myOwner) {
+//		this.myOwner = myOwner;
+//	}
+
+	public Long getOwnerid() {
+		return ownerid;
+	}
+
+	public void setOwnerid(Long ownerid) {
+		this.ownerid = ownerid;
+	}
 
 	public MessDTO() {
 		super();

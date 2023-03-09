@@ -1,0 +1,9 @@
+package com.app.service;
+
+import com.app.dto.MessDTO;
+import com.app.pojos.Mess;
+
+public interface MessService {
+
+	Mess updateCustomerDetails(MessDTO detachedMess);
+}

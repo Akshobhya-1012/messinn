@@ -1,5 +1,7 @@
 package com.app.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,15 +20,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.CustomerDao;
+import com.app.dao.MessDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.CredentialsDTO;
 import com.app.dto.CustomerDTO;
+import com.app.dto.MessDTO;
+import com.app.dto.OwnerDTO;
 import com.app.dto.SignUpDto;
 import com.app.pojos.Customer;
 import com.app.pojos.Dish;
 import com.app.pojos.Mess;
+import com.app.pojos.Owner;
+import com.app.service.AdminService;
 import com.app.service.CustomerService;
 import com.app.service.DishService;
+import com.app.service.MessService;
 
 @RestController
 @CrossOrigin
@@ -33,6 +42,31 @@ import com.app.service.DishService;
 @Validated
 public class MessController {
 
+	@Autowired
+	private MessService messService;
 	
+	@Autowired
+	private MessDao messDao;
+	
+	@PutMapping
+	public Mess updateMessDetails(@RequestBody MessDTO detachedMess) {
+		//System.out.println("in update emp " + detachedCustomer.getId());// not null
+		return messService.updateMessDetails(detachedMess);
+	}
+	
+	@PostMapping("/signup")
+    public Mess registerMess(@RequestBody MessDTO transientMess){
+		
+	return messService.addMess(transientMess);
 	
 }
+	
+	@GetMapping
+	public List<Mess> getAllMess() {
+		return messService.getAllMessDetails();
+	}
+	
+	
+	
+	
+}//class

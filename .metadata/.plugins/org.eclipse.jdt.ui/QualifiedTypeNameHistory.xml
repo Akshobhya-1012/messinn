@@ -12,12 +12,16 @@
     <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
     <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
     <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
-    <fullyQualifiedTypeName name="com.app.pojos.Owner"/>
     <fullyQualifiedTypeName name="com.app.dto.OwnerDTO"/>
     <fullyQualifiedTypeName name="com.app.pojos.Dish"/>
     <fullyQualifiedTypeName name="com.app.service.DishService"/>
-    <fullyQualifiedTypeName name="com.app.pojos.Mess"/>
-    <fullyQualifiedTypeName name="com.app.dto.DishDTO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Owner"/>
+    <fullyQualifiedTypeName name="com.app.dto.DishDTO"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Customer"/>
+    <fullyQualifiedTypeName name="com.app.service.MessService"/>
+    <fullyQualifiedTypeName name="com.app.dto.MessDTO"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Mess"/>
+    <fullyQualifiedTypeName name="com.app.dao.MessDao"/>
 </qualifiedTypeNameHistroy>

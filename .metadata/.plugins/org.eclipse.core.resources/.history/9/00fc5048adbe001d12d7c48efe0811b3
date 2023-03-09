@@ -83,7 +83,7 @@ public class MessServiceImpl implements MessService{
 	@Override
 	public Mess getMessByMess(Long Id)
 	{
-		return messDao.findById(Id).orElseThrow();
+		return messDao.getById(Id);
 	}
 	
 }

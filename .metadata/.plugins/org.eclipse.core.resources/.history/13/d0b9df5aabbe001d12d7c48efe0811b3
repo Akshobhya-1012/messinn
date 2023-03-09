@@ -16,7 +16,5 @@ public interface MessService {
 	List<Mess> getMessByOwner(Long Id);
 
 	Long noOfMess();
-
-	Mess getMessByMess(Long Id);
 }
 

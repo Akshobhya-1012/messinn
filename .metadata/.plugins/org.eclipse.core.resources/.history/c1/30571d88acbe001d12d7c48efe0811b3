@@ -67,7 +67,7 @@ public class MessController {
 	}
 	
 	@PostMapping("/{ownerId}")
-	public List<Mess> getMessByOwnerId(@PathVariable Long ownerId)
+	public List<Mess> getMessByOwnerId(Long ownerId)
 	{
 		return messService.getMessByOwner(ownerId);
 	}
@@ -78,7 +78,7 @@ public class MessController {
 		return messService.noOfMess();
 	}
 	
-	@PostMapping("/getbyid/{messId}")
+	@PostMapping("/{messId}")
 	public Mess getMessByMessId(@PathVariable Long messId)
 	{
 		return messService.getMessByMess(messId);

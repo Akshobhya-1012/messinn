@@ -78,7 +78,7 @@ public class MessController {
 		return messService.noOfMess();
 	}
 	
-	@PostMapping("/getbyid/{messId}")
+	@PostMapping("/{messId}")
 	public Mess getMessByMessId(@PathVariable Long messId)
 	{
 		return messService.getMessByMess(messId);

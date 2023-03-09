@@ -80,10 +80,5 @@ public class MessServiceImpl implements MessService{
 		 return messDao.count();
 	 }
 
-	@Override
-	public Mess getMessByMess(Long Id)
-	{
-		return messDao.findById(Id).orElseThrow();
-	}
 	
 }

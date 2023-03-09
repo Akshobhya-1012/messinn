@@ -54,7 +54,7 @@ public class MessController {
 		return messService.updateMessDetails(detachedMess);
 	}
 	
-	@PostMapping("/signup")
+	@PostMapping("/addmess")
     public Mess registerMess(@RequestBody MessDTO transientMess){
 		
 	return messService.addMess(transientMess);

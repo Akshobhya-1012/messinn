@@ -1,0 +1,27 @@
+/* img{
+    width:100%;
+    height:25%;
+    float:inline-start
+} */
+
+#text{
+    
+    font-size: 30px;
+    font-weight: 100;
+    font-style: italic;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(12, 27, 27);
+    letter-spacing: 5px;
+    text-align: center;
+    
+    
+    
+}
+.about-h1{
+    background-color:#00a8a8;
+    padding: 30px;
+    margin-top: 50px;
+    text-align: center;
+    color: rgb(32, 26, 26);
+    margin-bottom: 30px;
+}

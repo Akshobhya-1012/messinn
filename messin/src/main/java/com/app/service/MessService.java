@@ -12,5 +12,9 @@ public interface MessService {
 	List<Mess> getAllMessDetails();
 
 	Mess addMess(MessDTO transientMess);
+
+	List<Mess> getMessByOwner(Long Id);
+
+	Long noOfMess();
 }
 

@@ -1,0 +1,5 @@
+package com.app.service;
+
+public class Mess_dishServiceImpl {
+
+}

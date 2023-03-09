@@ -68,5 +68,17 @@ public class MessServiceImpl implements MessService{
 	}
 	
 	
+	@Override
+	public List<Mess> getMessByOwner(Long Id)
+	{
+		return messDao.findAllByMyOwnerId(Id);
+	}
+	
+	@Override
+	 public Long noOfMess()
+	 {
+		 return messDao.count();
+	 }
+
 	
 }

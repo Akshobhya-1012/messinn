@@ -24,4 +24,6 @@ public interface OwnerService {
 	List<Owner> getAllOwnerDetails();
 
 	Owner updateOwnerDetails(OwnerDTO detachedOwner);
+
+	Long noOfOwners();
 }

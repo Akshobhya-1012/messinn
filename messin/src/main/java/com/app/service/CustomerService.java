@@ -20,6 +20,10 @@ public interface CustomerService {
 	Boolean findByEmail(String email);
 
 	List<Customer> getAllCustDetails();
+
+	List<Customer> getCustByMess(Long Id);
+
+	Long noOfCustomers();
 	
 
 	

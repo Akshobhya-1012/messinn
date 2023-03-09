@@ -66,6 +66,18 @@ public class MessController {
 		return messService.getAllMessDetails();
 	}
 	
+	@PostMapping("/{ownerId}")
+	public List<Mess> getMessByOwnerId(Long ownerId)
+	{
+		return messService.getMessByOwner(ownerId);
+	}
+	
+	@GetMapping("/count")
+	public Long noOfMess()
+	{
+		return messService.noOfMess();
+	}
+	
 	
 	
 	

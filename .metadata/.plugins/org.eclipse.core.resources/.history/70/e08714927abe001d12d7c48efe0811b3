@@ -1,0 +1,71 @@
+package com.app.dto;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
+
+import com.app.pojos.Dish;
+import com.app.pojos.Mess;
+import com.app.pojos.Mess_dish;
+public class Mess_DishDTO {
+
+	private Long id;
+	private String dDescription;
+	private double dPrice;
+	private String mdImage;
+	private Long messId;
+	private Long dishId;
+	public Mess_DishDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Mess_DishDTO(Long id, String dDescription, double dPrice, String mdImage, Long messId, Long dishId) {
+		super();
+		this.id = id;
+		this.dDescription = dDescription;
+		this.dPrice = dPrice;
+		this.mdImage = mdImage;
+		this.messId = messId;
+		this.dishId = dishId;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getdDescription() {
+		return dDescription;
+	}
+	public void setdDescription(String dDescription) {
+		this.dDescription = dDescription;
+	}
+	public double getdPrice() {
+		return dPrice;
+	}
+	public void setdPrice(double dPrice) {
+		this.dPrice = dPrice;
+	}
+	public String getMdImage() {
+		return mdImage;
+	}
+	public void setMdImage(String mdImage) {
+		this.mdImage = mdImage;
+	}
+	public Long getMessId() {
+		return messId;
+	}
+	public void setMessId(Long messId) {
+		this.messId = messId;
+	}
+	public Long getDishId() {
+		return dishId;
+	}
+	public void setDishId(Long dishId) {
+		this.dishId = dishId;
+	}
+	
+	
+	
+	
+	
+}

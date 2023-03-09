@@ -63,6 +63,11 @@ public class DishServiceImpl implements DishService {
 		return dishDao.findAll();
 	}
 
-	
+
+	 @Override
+	 public Long noOfDish()
+	 {
+		 return dishDao.count();
+	 }
 
 }

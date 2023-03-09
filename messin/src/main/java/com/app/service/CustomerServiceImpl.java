@@ -65,9 +65,17 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDao.findAll();
 	}
 
-	
+	@Override
+	public List<Customer> getCustByMess(Long Id)
+	{
+		return customerDao.findAllByMyMessId(Id);
+	}
 
-	 
+	 @Override
+	 public Long noOfCustomers()
+	 {
+		 return customerDao.count();
+	 }
 
 	
 	

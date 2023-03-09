@@ -61,6 +61,10 @@ public class OwnerController {
 		return ownerService.updateOwnerDetails(detachedOwner);
 	}
 	
-	
+	@GetMapping("/count")
+	public Long noOfOwners()
+	{
+		return ownerService.noOfOwners();
+	}
 	
 }

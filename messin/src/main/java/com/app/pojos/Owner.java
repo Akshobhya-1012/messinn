@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "owner")
 public class Owner extends BaseEntity {
@@ -19,6 +21,7 @@ public class Owner extends BaseEntity {
 	private String password;
 
 	@OneToMany(mappedBy = "myOwner", cascade = CascadeType.ALL, orphanRemoval = true,fetch=FetchType.LAZY)
+	@JsonIgnore
 	private java.util.List<Mess> mess_list = new ArrayList<>();
 
 	public Owner() {

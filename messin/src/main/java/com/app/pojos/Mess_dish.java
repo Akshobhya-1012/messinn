@@ -2,27 +2,32 @@ package com.app.pojos;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="mess_dish")
 public class Mess_dish extends BaseEntity {
 
 	@Column(name="Description",length = 30)
-	private String dDescription;
+	private String description;
 	@Column(name="Price", nullable = false)
-	private double dPrice;
+	private double price;
 	@Column(name="Image",length = 30)
-	private String mdImage;
+	private String image;
 	
 	@ManyToOne
 	@JoinColumn(name="mess_fid")
+	@JsonIgnore
 	private Mess myMess;
 	
 	@ManyToOne
 	@JoinColumn(name="dish_fid")
+	@JsonIgnore
 	private Dish myDish;
 	
 	@ManyToOne
 	@JoinColumn(name="customer_fid")
+	@JsonIgnore
 	private Customer myCustomer;
 
 	public Mess_dish() {
@@ -33,36 +38,36 @@ public class Mess_dish extends BaseEntity {
 	public Mess_dish(String dDescription, double dPrice, String mdImage, Mess myMess, Dish myDish,
 			Customer myCustomer) {
 		super();
-		this.dDescription = dDescription;
-		this.dPrice = dPrice;
-		this.mdImage = mdImage;
+		this.description = dDescription;
+		this.price = dPrice;
+		this.image = mdImage;
 		this.myMess = myMess;
 		this.myDish = myDish;
 		this.myCustomer = myCustomer;
 	}
 
-	public String getdDescription() {
-		return dDescription;
+	public String getdescription() {
+		return description;
 	}
 
-	public void setdDescription(String dDescription) {
-		this.dDescription = dDescription;
+	public void setdescription(String dDescription) {
+		this.description = dDescription;
 	}
 
 	public double getdPrice() {
-		return dPrice;
+		return price;
 	}
 
-	public void setdPrice(double dPrice) {
-		this.dPrice = dPrice;
+	public void setprice(double dPrice) {
+		this.price = dPrice;
 	}
 
 	public String getMdImage() {
-		return mdImage;
+		return image;
 	}
 
-	public void setMdImage(String mdImage) {
-		this.mdImage = mdImage;
+	public void setimage(String mdImage) {
+		this.image = mdImage;
 	}
 
 	public Mess getMyMess() {

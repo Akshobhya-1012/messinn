@@ -18,6 +18,8 @@ public class Mess extends BaseEntity {
 	private String address;
 	@Column(length = 30,unique = true)
 	private String mob;
+	@Column(length=250)
+	private String image;
 	
 	@ManyToOne
 	@JoinColumn(name="owner_fid")
@@ -37,14 +39,23 @@ public class Mess extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Mess(String mname, String maddress, String mmob, Owner myOwner) {
+	public Mess(String mname, String maddress, String mmob, Owner myOwner,String image) {
 		super();
 		this.name = mname;
 		this.address = maddress;
 		this.mob = mmob;
 		this.myOwner = myOwner;
+		this.image=image;
 		//this.mess_dish_list = mess_dish_list;
 		//this.customer = customer;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getname() {

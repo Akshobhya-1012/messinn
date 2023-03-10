@@ -62,6 +62,7 @@ public class MessServiceImpl implements MessService{
 		newMess.setmob(transientMess.getMob());
 		newMess.setname(transientMess.getName());
 		newMess.setMyOwner(ownerDao.getById(transientMess.getOwnerid()));
+		newMess.setImage(transientMess.getImage());
 		//System.out.println();
 		return messDao.save(newMess);
 		

@@ -7,6 +7,7 @@ import "./About.css";
 import banner7 from '../../Assets/Banner/banner7.png'
 // import E from "../Home/E/E";
 // import Features from "../Home/Features/Features";
+import Footer from './../Shared/Footer/Footer';
 
 const About = () => {
   return (
@@ -18,18 +19,19 @@ const About = () => {
           {/* <GoogleMap></GoogleMap> */}
         </div>
         <div className="p-5">
-          <img src={banner7} alt="mama"></img>
+          {/* <img src={banner7} alt="mama"></img> */}
           <Carousel.Caption>
-            <p className="mt-3">
+            <p className="mt-3" id="text">
               Our mission is to elevate the quality of life for the urban consumer with unparalleled convenience.
               Convenience is what makes us tick. It's what makes us get out of bed and say, "Let's do this."
             </p>
           </Carousel.Caption>
         </div>
       </div>
-      {/* <Features></Features> */}
+      
       
     </div>
+    
   );
 };
 

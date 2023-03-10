@@ -4,7 +4,7 @@ import axios from 'axios'
 import config from '../../../config'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-
+import { Carousel } from "react-bootstrap";
 // use the dispatch to update the redux store about the signin state
 import { useDispatch } from 'react-redux'
 import { signin } from '../../Slice/authslice'
@@ -59,8 +59,9 @@ const AdminSignin = () => {
   }
 
   return (
-    <div style={{ marginTop: 100 }}>
-      <div style={styles.container}>
+    <div id="dem" style={{ marginTop: 10}}>       
+        <div style={styles.container}>
+         
         <div className='mb-3'>
           <label>Email</label>
           <input
@@ -110,6 +111,7 @@ const styles = {
     broderWidth: 1,
     borderStyle: 'solid',
     boxShadow: '1px 1px 20px 5px #C9C9C9',
+    
   },
   signinButton: {
     position: 'relative',

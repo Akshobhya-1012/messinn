@@ -20,6 +20,7 @@ public class MessDTO {
 	private String mob;
 	private String address;
 	private Long ownerid;
+	private String image;
 	
 	//private Owner myOwner;
 //	public Owner getMyOwner() {
@@ -43,11 +44,20 @@ public class MessDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MessDTO(String mName, String mMob, String mAddress) {
+	public MessDTO(String mName, String mMob, String mAddress,String image) {
 		super();
 		this.name = mName;
 		this.mob = mMob;
 		this.address = mAddress;
+		this.image=image;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getName() {

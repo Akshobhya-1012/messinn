@@ -69,5 +69,11 @@ public class DishServiceImpl implements DishService {
 	 {
 		 return dishDao.count();
 	 }
+	 
+	 @Override
+	 public Dish getDishById(Long Id)
+	 {
+		 return dishDao.getById(Id);
+	 }
 
 }

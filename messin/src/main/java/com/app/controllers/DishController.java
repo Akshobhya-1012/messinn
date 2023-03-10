@@ -51,7 +51,7 @@ public class DishController {
 	
 	
 	@DeleteMapping("/{dishId}")
-	public ApiResponse deleteOwnerDetails(@PathVariable Long dishId) {
+	public ApiResponse deleteDishDetails(@PathVariable Long dishId) {
 
 		return new ApiResponse(dishService.deleteDish(dishId));
 	}
@@ -61,7 +61,7 @@ public class DishController {
 //	Boolean exist=dishService.findByName(transientDish.getName());
 //	if(!exist)
 	{
-		Dish newDish=new Dish(transientDish.getName(),transientDish.getDescription());
+		Dish newDish=new Dish(transientDish.getName(),transientDish.getDescription(), transientDish.getPrice());
 		//newDish.setName(transientDish.getName());
 		//newDish.setDescription(transientDish.getDescription());
 		

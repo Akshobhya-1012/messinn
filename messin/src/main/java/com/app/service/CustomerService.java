@@ -24,6 +24,8 @@ public interface CustomerService {
 	List<Customer> getCustByMess(Long Id);
 
 	Long noOfCustomers();
+
+	Customer getCustById(Long Id);
 	
 
 	

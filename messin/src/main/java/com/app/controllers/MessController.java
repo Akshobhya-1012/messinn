@@ -84,6 +84,11 @@ public class MessController {
 		return messService.getMessByMess(messId);
 	}
 	
+	@DeleteMapping("/{messId}")
+	public ApiResponse deleteMessDetails(@PathVariable Long messId) {
+
+		return new ApiResponse(messService.deleteMess(messId));
+	}
 	
 	
 }//class

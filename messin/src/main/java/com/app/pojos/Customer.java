@@ -34,7 +34,11 @@ public class Customer extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "mess_fid")
+<<<<<<< HEAD
 	
+=======
+	@JsonIgnore
+>>>>>>> 8a8febff638bfe4c92c50fe42f200a76c7e29fc8
 	private Mess myMess;
 
 	@OneToOne(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
@@ -56,6 +60,14 @@ public class Customer extends BaseEntity {
 
 	public String getName() {
 		return name;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 
 	public void setName(String name) {
@@ -115,5 +127,8 @@ public class Customer extends BaseEntity {
 		return "Customer [name=" + name + ", email=" + email + ", mob=" + mob + "]";
 	}
 
+	@OneToOne
+	@JoinColumn(name = "username", referencedColumnName = "username")
+	private Login login;
 	
 }

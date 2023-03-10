@@ -1,0 +1,68 @@
+package com.app.service;
+
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.custom_exceptions.ResourceNotFoundException;
+import com.app.dao.AdminDao;
+import com.app.dao.CustomerDao;
+import com.app.dao.LoginDao;
+import com.app.dao.OwnerDao;
+import com.app.dto.LoginAndSignUpSuccessDto;
+import com.app.pojos.Admin;
+import com.app.pojos.Customer;
+import com.app.pojos.DeliveryBoy;
+import com.app.pojos.Login;
+import com.app.pojos.Manager;
+import com.app.repository.AdminRepository;
+import com.app.repository.CustomerRepository;
+import com.app.repository.DeliveryBoyRepository;
+import com.app.repository.LoginRepository;
+import com.app.repository.ManagerRepository;
+
+@Service
+@Transactional
+public class LoginService {
+	
+	@Autowired
+	private LoginDao loginRepo;
+	
+	@Autowired
+	private AdminDao adminRepo;
+	
+	@Autowired
+	private CustomerDao custrepo;
+	
+	@Autowired
+	private OwnerDao managerRepo;
+	
+	
+	
+	
+	
+	public LoginAndSignUpSuccessDto getById(String userName) {
+		Login foundObj = loginRepo.findById(userName).orElseThrow();
+		System.out.println(foundObj);
+		if(foundObj.getRole().equals("ROLE_ADMIN")) {
+			 Admin admin = adminRepo.findByLoginUsername(foundObj.getUsername());
+			return new LoginAndSignUpSuccessDto(admin.getId(),admin.getFirstName(),admin.getLastName(), admin.getEmail(),admin.getMobileNumber(), foundObj.getUsername(),foundObj.getRole());
+		}
+		else if(foundObj.getRole().equals("ROLE_CUSTOMER")) {
+			Customer cust = custrepo.findByLoginUsername(foundObj.getUsername());
+			return new LoginAndSignUpSuccessDto(cust.getId(),cust.getFirstName(),cust.getLastName(), cust.getEmail(),cust.getMobileNumber(), foundObj.getUsername(),foundObj.getRole());
+		}
+		else if(foundObj.getRole().equals("ROLE_MANAGER")){
+		    Manager manager = managerRepo.findByLoginUsername(foundObj.getUsername());
+		    return new LoginAndSignUpSuccessDto(manager.getId(),manager.getFirstName(),manager.getLastName(), manager.getEmail(),manager.getMobileNumber(), foundObj.getUsername(),foundObj.getRole());
+	    }
+		else if(foundObj.getRole().equals("ROLE_DELEVERYBOY")) {
+			DeliveryBoy dboy = dboyRepo.findByLoginUsername(foundObj.getUsername());
+			 return new LoginAndSignUpSuccessDto(dboy.getId(),dboy.getFirstName(),dboy.getLastName(), dboy.getEmail(),dboy.getMobileNumber(), foundObj.getUsername(),foundObj.getRole());
+		}		
+		throw new ResourceNotFoundException("login failed");
+	}
+   
+}

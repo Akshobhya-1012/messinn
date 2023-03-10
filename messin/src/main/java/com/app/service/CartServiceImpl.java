@@ -1,0 +1,74 @@
+package com.app.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.custom_exception.ResourceNotFoundException;
+import com.app.pojos.Cart;
+import com.app.pojos.Cart_item;
+import com.app.pojos.Customer;
+import com.app.pojos.Dish;
+import com.app.dao.CartDao;
+
+@Service
+@Transactional
+public class CartServiceImpl implements CartService {
+	@Autowired
+	private CartDao cartDao;
+	
+	@Autowired
+	private CustomerServiceImpl custService;
+
+	@Autowired
+	private DishServiceImpl dishservice;
+	
+	@Autowired
+	private Cart_itemServiceImpl cart_itemService;
+	
+	@Override
+	public Cart addToCart(Long CustomerId, Long DishId) {
+		System.out.println(CustomerId+""+DishId);
+		Customer customer=custService.getCustById(CustomerId);
+		Dish dishToAdd=dishservice.getDishById(DishId);
+		Cart_item cartItem = cart_itemService.addCart_item(dishToAdd);
+		customer.getMyCart().addCart_items(cartItem);
+		customer.getMyCart().setMyCustomer(customer);
+		cartDao.save(customer.getMyCart());
+		return getCartByCustomerId(CustomerId);
+	}
+	
+	public Cart getCartByCustomerId(Long customerId) {
+		Cart cart=cartDao.findByMyCustomerId(customerId);
+         cart.getCartItems().size();
+		return cart;
+		}
+
+	@Override
+	public void clearCart(Long custId) {
+		Customer cust=custService.getCustById(custId);
+		Cart CustomerCart=cust.getMyCart();
+		CustomerCart.setTotalCartPrice(0);
+		CustomerCart.setTotalItems(0);
+//		if(cartRepo.existsById(CustomerCart.getId()))
+//		cartRepo.deleteById(CustomerCart.getId());	
+//		System.out.println(CustomerCart.getId());
+		CustomerCart.getCartItems().clear();
+	}
+
+	@Override
+	public boolean removeCartItem(Long cartItemId) {
+		return cart_itemService.removeCartItem(cartItemId);
+		
+	}
+
+	@Override
+	public Cart getCartById(Long cartId) {
+		
+		return cartDao.findById(cartId).orElseThrow(()-> new ResourceNotFoundException("resource not found!!"));
+	}
+	
+	
+
+	
+}

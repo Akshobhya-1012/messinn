@@ -29,6 +29,14 @@ public class Owner extends BaseEntity {
 		
 	}
 
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
 	public Owner(String name, String email, String mob, String password) {
 		super();
 		this.name = name;
@@ -81,5 +89,9 @@ public class Owner extends BaseEntity {
 	public String toString() {
 		return "Owner [name=" + name + ", email=" + email + ", mob=" + mob + "]";
 	}
+	
+	@OneToOne
+	@JoinColumn(name = "username", referencedColumnName = "username")
+	private Login login;
 
 }

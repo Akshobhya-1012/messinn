@@ -1,0 +1,40 @@
+package com.app.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.pojos.Cart_item;
+import com.app.pojos.Dish;
+import com.app.dao.Cart_itemDao;
+
+@Service
+@Transactional
+public class Cart_itemServiceImpl implements Cart_itemService{
+ 
+	@Autowired
+	private Cart_itemDao cart_itemDao;
+	
+	
+	@Override
+	public Cart_item addCart_item(Dish newDish) {
+		Cart_item newCartItem=new Cart_item();
+		newCartItem.setService(newSerivce);
+		newCartItem.setQuantity(1);
+		newCartItem.setServicePrice(newSerivce.getEstimatedCost());
+		cartitemRepo.save(newCartItem);
+		return newCartItem;
+	}
+
+
+	@Override
+	public boolean removeCartItem(Long itemId) {
+		if(cartitemRepo.existsById(itemId)) {
+		      cartitemRepo.deleteById(itemId);
+		      return true;
+		}
+		return false;
+	}
+
+
+}

@@ -36,8 +36,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer updateCustomerDetails(CustomerDTO detachedCustomer) {
-		
-		
 		if (customerDao.existsById(detachedCustomer.getId())) {
 			Customer updCustomer= customerDao.getById(detachedCustomer.getId());
 			updCustomer.setEmail(detachedCustomer.getEmail());
@@ -77,7 +75,11 @@ public class CustomerServiceImpl implements CustomerService {
 		 return customerDao.count();
 	 }
 
-	
+	@Override
+	public Customer getCustById(Long Id)
+	{
+		return customerDao.getById(Id);
+	}
 	
 	
 	

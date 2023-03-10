@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.app.dto.CredentialsDTO;
 import com.app.dto.OwnerDTO;
+import com.app.dto.SignUpDto;
 import com.app.pojos.Admin;
 import com.app.pojos.Owner;
 
@@ -13,7 +14,7 @@ public interface OwnerService {
 	
 	Owner fetchOwnerDetails(Long ownerId);
 	
-	Owner addOwner(Owner owner);
+	Owner addOwner(SignUpDto owner);
 	
 	String deleteOwner(Long ownerId);
 

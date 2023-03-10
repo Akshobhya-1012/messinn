@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.CustomerDao;
+import com.app.dao.LoginDao;
 import com.app.dto.CredentialsDTO;
 import com.app.dto.CustomerDTO;
 import com.app.dto.SignUpDto;
 import com.app.pojos.Customer;
+import com.app.pojos.Login;
 import com.app.service.CustomerService;
 
 @RestController
@@ -35,6 +38,12 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerDao customerDao;
+	
+	@Autowired
+	private LoginDao loginDao;
+	
+	@Autowired
+	private PasswordEncoder encode;
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> validateCustomer(@RequestBody @Valid CredentialsDTO dto) {
@@ -48,7 +57,7 @@ public class CustomerController {
 	}
 
 	@PostMapping("/signup")
-	    public ResponseEntity<?> registerCustomer(@RequestBody CustomerDTO transientCust){
+	    public ResponseEntity<?> registerCustomer(@RequestBody SignUpDto transientCust){
 //		Boolean exist=customerService.findByEmail(transientCust.getEmail());
 //		if(!exist)
 		{
@@ -57,7 +66,9 @@ public class CustomerController {
 			cust.setEmail(transientCust.getEmail());
 			cust.setMob(transientCust.getMob());
 			cust.setPassword(transientCust.getPassword());
-			
+			Login login = new Login(transientCust.getUserName(),encode.encode(transientCust.getPassword()), transientCust.getRole());
+			loginDao.save(login);
+			cust.setLogin(login);
 			customerDao.save(cust);
 			return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
 			

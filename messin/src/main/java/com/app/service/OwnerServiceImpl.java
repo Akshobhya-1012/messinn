@@ -4,16 +4,20 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custom_exception.ResourceNotFoundException;
+import com.app.dao.LoginDao;
 import com.app.dao.OwnerDao;
 import com.app.dto.AdminDTO;
 import com.app.dto.CredentialsDTO;
 import com.app.dto.OwnerDTO;
+import com.app.dto.SignUpDto;
 import com.app.pojos.Admin;
 import com.app.pojos.Customer;
+import com.app.pojos.Login;
 import com.app.pojos.Owner;
 
 @Service
@@ -26,6 +30,11 @@ public class OwnerServiceImpl implements OwnerService {
 	@Autowired
 	private ModelMapper mapper;
 	
+	@Autowired
+	private PasswordEncoder encode;
+
+	@Autowired
+	private LoginDao loginDao;
 	@Override
 	public OwnerDTO authenticateOwner(CredentialsDTO dto) {
 		Owner owner = ownerDao.findByEmailAndPassword(dto.getEmail(), dto.getPassword())
@@ -40,8 +49,16 @@ public class OwnerServiceImpl implements OwnerService {
 						new ResourceNotFoundException("Invalid Owner ID !!!!!"));
 	}
 
-	@Override
-	public Owner addOwner(Owner owner) {
+//	@Override
+//	public Owner addOwner(Owner owner) {
+//		return ownerDao.save(owner);
+//	}
+	
+	public Owner addOwner(SignUpDto obj) {
+		Owner owner = new Owner(obj.getName(), obj.getEmail(),obj.getMob(),obj.getPassword());
+		Login login = new Login(obj.getUserName(),encode.encode(obj.getPassword()), obj.getRole());
+		owner.setLogin(login);
+		loginDao.save(login);
 		return ownerDao.save(owner);
 	}
 	

@@ -50,7 +50,6 @@ public class AdminController {
 		return ResponseEntity.ok(adminService.authenticateAdmin(dto));
 	}
 
-	
 
 	@DeleteMapping("/{ownerId}")
 	public ApiResponse deleteOwnerDetails(@PathVariable Long ownerId) {

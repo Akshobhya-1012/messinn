@@ -86,4 +86,15 @@ public class MessServiceImpl implements MessService{
 		return messDao.findById(Id).orElseThrow();
 	}
 	
+	
+	@Override
+	public String deleteMess(Long messId) {
+		// chekc if owner exists by id
+		if (messDao.existsById(messId)) {
+			messDao.deleteById(messId);
+			return "Mess details deleted ....";
+		}
+		return "Deletion Failed : Invalid Mess Id !!!!!!!!!!!";
+	}
+	
 }

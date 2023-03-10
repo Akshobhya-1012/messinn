@@ -1,0 +1,61 @@
+package com.app.controllers;
+
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dto.LoginAndSignUpSuccessDto;
+//import com.app.dto.SignupDto;
+import com.app.pojos.Admin;
+import com.app.service.AdminServiceImpl;
+import com.app.service.CustomerServiceImpl;
+import com.app.service.LoginService;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "*")
+public class SigninSignupController {
+	
+	@Autowired
+	private com.app.service.CustomerServiceImpl custSer;
+	
+	@Autowired
+	private com.app.service.LoginService login;
+	
+//	@PostMapping("/signup")
+//	public LoginAndSignUpSuccessDto signUp(SignupDto newUser) {
+//	   if(newUser.getRole().equals("ROLE_CUSTOMER")) {
+//		   return custSer.addCustomerDetails(newUser);
+//	   }
+//	    return null;
+//	}
+
+	@GetMapping("/success")
+	public LoginAndSignUpSuccessDto getAdmin(Principal principle) {
+		System.out.println("in method"+principle.toString());
+		if(principle.getName()==null) {
+			System.out.println("principle is null");
+//			return new ResponseEntity<>("please login", HttpStatus.OK);
+			return null;
+		}
+		System.out.println(principle.getName());
+		 LoginAndSignUpSuccessDto res = login.getById(principle.getName());
+		 System.out.println(res);
+//		 return new ResponseEntity<>(res, HttpStatus.OK);
+		 return res;
+	}
+	
+//	@GetMapping("/getusername")
+//	public String currentUserName(Principal p) {
+//		return p.getName();
+//	  }
+}

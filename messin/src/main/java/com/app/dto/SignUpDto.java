@@ -6,19 +6,50 @@ public class SignUpDto {
 	private String password;
 	private String mob;
 	private String name;
+	private String userName;
+	private String role;
 	public SignUpDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public SignUpDto(String email, String password, String mob, String name) {
+	
+
+	public SignUpDto(String email, String password, String mob, String name, String userName, String role) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.mob = mob;
 		this.name = name;
+		this.userName = userName;
+		this.role = role;
 	}
-	
+
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
+	public String getRole() {
+		return role;
+	}
+
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
 
 	public String getName() {
 		return name;

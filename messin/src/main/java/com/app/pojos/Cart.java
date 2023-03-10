@@ -15,23 +15,26 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="cart")
+@Table(name = "cart")
 public class Cart extends BaseEntity {
 
-	
 	private int totalItems;
 	private double totalCartPrice;
 	@CreationTimestamp
 	private LocalDate createdOn;
 	@UpdateTimestamp
 	private LocalDate updatedOn;
-	
-	@OneToMany(mappedBy = "myCart", cascade = CascadeType.ALL,orphanRemoval=true)
-	private java.util.List<Cart_item> cartItems=new ArrayList<>();
-	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="customer_fid")
+
+	@OneToMany(mappedBy = "myCart", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private java.util.List<Cart_item> cartItems = new ArrayList<>();
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "customer_fid")
+	@JsonIgnore
 	private Customer myCustomer;
 
 	public Cart() {
@@ -97,7 +100,15 @@ public class Cart extends BaseEntity {
 	public void setMyCustomer(Customer myCustomer) {
 		this.myCustomer = myCustomer;
 	}
-	
-	
-	
+
+	public void addCart_items(Cart_item items) {
+		System.out.println(items);
+		items.setMyCart(this);
+		int qty = items.getQuantity();
+		double price = items.getTotalPrice();
+		totalItems += qty;
+		totalCartPrice += price;
+		this.cartItems.add(items);
+
+	}
 }

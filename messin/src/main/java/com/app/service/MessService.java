@@ -18,5 +18,7 @@ public interface MessService {
 	Long noOfMess();
 
 	Mess getMessByMess(Long Id);
+
+	String deleteMess(Long messId);
 }
 

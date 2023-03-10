@@ -1,1 +1,5 @@
 1678011854423	Rename type 'CustomerDto'
+1678446365934	Rename type 'LoginRepository'
+1678449072845	Extract local variable 'admin'
+1678449301218	Extract local variable 'login'
+1678449482114	Rename package 'service'

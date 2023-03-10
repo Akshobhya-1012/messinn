@@ -39,14 +39,14 @@ public class OwnerController {
 		return ResponseEntity.ok(ownerService.authenticateOwner(dto));
 	}
 	@PostMapping("/signup")
-	public Owner registerOwner(@RequestBody OwnerDTO transientOwner){
+	public Owner registerOwner(@RequestBody SignUpDto transientOwner){
 //		Boolean exist=ownerService.findByEmail(transientOwner.getEmail());
 //		if(!exist)
 		{
 			
-			Owner own=new Owner(transientOwner.getName(),transientOwner.getEmail(), transientOwner.getMob(), transientOwner.getPassword());
-			ownerService.addOwner(own);
-			return ownerService.addOwner(own);
+//			Owner own=new Owner(transientOwner.getName(),transientOwner.getEmail(), transientOwner.getMob(), transientOwner.getPassword());
+//			ownerService.addOwner(transientOwner);
+			return ownerService.addOwner(transientOwner);
 			
 		}
 //		else

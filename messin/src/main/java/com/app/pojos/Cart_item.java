@@ -4,7 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="cart_item")
@@ -22,11 +25,17 @@ public class Cart_item extends BaseEntity {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Cart_item(int quantity, double totalPrice, Cart myCart) {
+	
+	@OneToOne
+	@JoinColumn(name="dish_fid")
+	@JsonIgnore
+	private Dish myDish;
+	public Cart_item(int quantity, double totalPrice, Cart myCart, Dish myDish) {
 		super();
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;
 		this.myCart = myCart;
+		this.myDish = myDish;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -46,6 +55,13 @@ public class Cart_item extends BaseEntity {
 	public void setMyCart(Cart myCart) {
 		this.myCart = myCart;
 	}
+	public Dish getMyDish() {
+		return myDish;
+	}
+	public void setMyDish(Dish myDish) {
+		this.myDish = myDish;
+	}
+	
 	
 	
 	

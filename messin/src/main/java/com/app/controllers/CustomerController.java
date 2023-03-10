@@ -68,7 +68,7 @@ public class CustomerController {
 		
 	}
 	
-	@GetMapping("/")
+	@GetMapping()
 	public List<Customer> getAllCust() {
 		return customerService.getAllCustDetails();
 	}

@@ -23,7 +23,7 @@ public class Mess extends BaseEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="owner_fid")
-	//@JsonIgnore
+	@JsonIgnore
 	private Owner myOwner;
 
 	@OneToMany(mappedBy = "myMess", cascade = CascadeType.ALL,orphanRemoval=true )

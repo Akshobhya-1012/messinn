@@ -55,7 +55,7 @@ public class OwnerController {
 		
 	} 
 	
-	@PutMapping
+	@PostMapping("/update")
 	public Owner updateOwnerDetails(@RequestBody OwnerDTO detachedOwner) {
 		//System.out.println("in update emp " + detachedCustomer.getId());// not null
 		return ownerService.updateOwnerDetails(detachedOwner);

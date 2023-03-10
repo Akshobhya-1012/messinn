@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "customer")
 public class Customer extends BaseEntity {
@@ -27,16 +29,19 @@ public class Customer extends BaseEntity {
 	private String password;
 
 	@OneToMany(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
+	@JsonIgnore
 	private java.util.List<Mess_dish> customer_dish_list = new ArrayList<>();
 
 	@ManyToOne
 	@JoinColumn(name = "mess_fid")
+	
 	private Mess myMess;
 
 	@OneToOne(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
+	@JsonIgnore
 	private Cart myCart;
 
-	public Customer() {
+	public Customer(){
 		super();
 		// TODO Auto-generated constructor stub
 	}

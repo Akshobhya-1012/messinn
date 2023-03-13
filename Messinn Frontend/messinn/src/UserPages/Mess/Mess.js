@@ -7,12 +7,12 @@ const Mess = ({ mess }) => {
   const navigate = useNavigate();
 
   const navigateToDetails = id =>{
-    navigate(`/mess/${id}`);
+    navigate(`/mess/getbyid/${id}`);
   }
   return (
     <div className="g-4 gx-5 col-sm-12 col-md-6 col-lg-4 text-center">
-      <div  className="card mx-auto" style={{ width: "22rem" }}>
-        <img id="id" src={image} className="card-img-top w-90" alt="..." />
+      <div  className="card mx-10" style={{ width: "22rem" }}>
+        <img id="id" src={image} className="cd" variant="top" alt="..." />
         <div className="card-body ">
           <h5 className="card-title">{name}</h5>
           <p className="card-text">

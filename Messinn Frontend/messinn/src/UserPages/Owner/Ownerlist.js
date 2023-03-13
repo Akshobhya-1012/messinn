@@ -18,7 +18,7 @@ function Ownerlist() {
  
    useEffect(() => {
       getData();
-   },)
+   },[])
   return (
         <div className="row ">
             <div className="page-title">
@@ -34,6 +34,7 @@ function Ownerlist() {
                                 <th>Owner Name</th>
                                 <th>Email</th>
                                 <th>Mobile No</th>
+                                <th></th>
                                
                             </tr>
                         </thead>
@@ -44,6 +45,7 @@ function Ownerlist() {
                                 <td>{output.name}</td>
                                 <td>{output.email}</td>
                                 <td>{output.mob}</td>
+                                
                                
 
                            

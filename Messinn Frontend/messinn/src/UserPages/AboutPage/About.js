@@ -8,10 +8,12 @@ import banner7 from '../../Assets/Banner/banner7.png'
 // import E from "../Home/E/E";
 // import Features from "../Home/Features/Features";
 import Footer from './../Shared/Footer/Footer';
+import Header from './../Shared/Header/Header';
 
 const About = () => {
   return (
     <div>
+      
       <h1 className="about-h1">About Us</h1>
       <div className="d-flex container">
         <PageTitle title="About"></PageTitle>

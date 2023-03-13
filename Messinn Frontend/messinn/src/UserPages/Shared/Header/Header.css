@@ -3,6 +3,7 @@
     font-weight: 700;
     
     
+    
 }
 .btn-new{
     border: 1px solid #ffff07;
@@ -19,7 +20,7 @@
     position: fixed;
     
     width: 100%;
-    left: auto;
+    left: 0px;
 }
 .me-auto{
     font-size: 21px;

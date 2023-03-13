@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Mess from '../Mess/Mess'
-import "./Messes.css"
+import '../SearchPage/MessSearch.css'
 
 
 
-const Messes = () => {
+const MessSearch = () => {
     const [messes, setMesses] = useState([]);
     
 
@@ -15,10 +15,10 @@ const Messes = () => {
     }, [])
     return (
         <div id='messes' className='container mb-5'>
-            <h1 className='heading text-center  mt-5'>Popular Messes</h1>
+            <h1 className='heading text-center  mt-5'>Messes nearby you</h1>
             <div className='row'>
             {
-                messes.slice(0,3).map(mess => <Mess
+                messes.map(mess => <Mess
                     key={mess.id}
                     mess={mess}
                 ></Mess>)
@@ -32,4 +32,4 @@ const Messes = () => {
     );
 };
 
-export default Messes;
+export default MessSearch;

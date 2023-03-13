@@ -34,11 +34,6 @@ public class Customer extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "mess_fid")
-<<<<<<< HEAD
-	
-=======
-	@JsonIgnore
->>>>>>> 8a8febff638bfe4c92c50fe42f200a76c7e29fc8
 	private Mess myMess;
 
 	@OneToOne(mappedBy = "myCustomer", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)

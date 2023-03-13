@@ -53,7 +53,7 @@ public class LoginService {
 			Customer cust = custrepo.findByLoginUsername(foundObj.getUsername());
 			return new LoginAndSignUpSuccessDto(cust.getId(),cust.getName(), cust.getEmail(),cust.getMob(), foundObj.getUsername(),foundObj.getRole());
 		}
-		else if(foundObj.getRole().equals("ROLE_MANAGER")){
+		else if(foundObj.getRole().equals("ROLE_OWNER")){
 		    Owner manager = managerRepo.findByLoginUsername(foundObj.getUsername());
 		    return new LoginAndSignUpSuccessDto(manager.getId(),manager.getName(), manager.getEmail(),manager.getMob(), foundObj.getUsername(),foundObj.getRole());
 	    }

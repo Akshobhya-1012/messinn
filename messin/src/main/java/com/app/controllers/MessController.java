@@ -66,10 +66,10 @@ public class MessController {
 		return messService.getAllMessDetails();
 	}
 	
-	@PostMapping("/{ownerId}")
-	public List<Mess> getMessByOwnerId(@PathVariable Long ownerId)
+	@GetMapping("/{ownerid}")
+	public List<Mess> getMessByOwnerId(@PathVariable Long ownerid)
 	{
-		return messService.getMessByOwner(ownerId);
+		return messService.getMessByOwner(ownerid);
 	}
 	
 	@GetMapping("/count")
@@ -80,7 +80,9 @@ public class MessController {
 	
 	@GetMapping("/getbyid/{messId}")
 	public Mess getMessByMessId(@PathVariable Long messId)
-	{
+	{	
+		Mess newMess=new Mess();
+		System.out.println(" "+newMess);
 		return messService.getMessByMess(messId);
 	}
 	

@@ -56,7 +56,7 @@ public class DishController {
 		return new ApiResponse(dishService.deleteDish(dishId));
 	}
 	
-	@PostMapping("/signup")
+	@PostMapping("/adddish")
     public ResponseEntity<?> registerDish(@RequestBody DishDTO transientDish){
 //	Boolean exist=dishService.findByName(transientDish.getName());
 //	if(!exist)

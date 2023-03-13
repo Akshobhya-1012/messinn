@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="dish")
 public class Dish extends BaseEntity {
@@ -20,6 +22,7 @@ public class Dish extends BaseEntity {
 	private String description;
 	private double price;
 	@OneToMany(mappedBy = "myDish", cascade = CascadeType.ALL,orphanRemoval=true, fetch=FetchType.EAGER)
+	
 	private java.util.List<Mess_dish> dish_mess_list=new ArrayList<>();
 	public Dish(String name, String description, double price) {
 		super();
